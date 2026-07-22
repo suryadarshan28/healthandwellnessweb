@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health & Wellness Blog</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4fff7;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #2e8b57;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background: #1f6f46;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 8px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .hero img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        section,
+        aside,
+        article {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .15);
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #888;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        form input,
+        form textarea,
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+
+        input[type=submit] {
+            background: #2e8b57;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #2e8b57;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 315px;
+        }
+
+        @media(max-width:768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="top">
+        <h1>Health & Wellness Blog</h1>
+        <p>Healthy Body • Healthy Mind • Healthy Life</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#nutrition">Nutrition</a></li>
+            <li><a href="#fitness">Fitness</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#form">Register</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero" id="home">
+        <h2>Welcome to Your Wellness Journey</h2>
+
+        <a href="https://www.who.int" target="_blank">
+            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200"
+                alt="Healthy Food">
+        </a>
+
+        <p>Click the image to visit the WHO website.</p>
+    </div>
+
+    <div class="container">
+
+        <main>
+
+            <!-- Nutrition Section -->
+            <section id="nutrition">
+                <h2>Balanced Nutrition</h2>
+
+                <article>
+                    <p>
+                        A healthy diet includes fruits, vegetables, proteins,
+                        whole grains and adequate water.
+                    </p>
+
+                    <h3>Healthy Meal Table</h3>
+
+                    <table>
+                        <tr>
+                            <th>Meal</th>
+                            <th>Food</th>
+                            <th>Benefit</th>
+                        </tr>
+
+                        <tr>
+                            <td>Breakfast</td>
+                            <td>Oats & Fruits</td>
+                            <td>Energy</td>
+                        </tr>
+
+                        <tr>
+                            <td>Lunch</td>
+                            <td>Rice, Vegetables</td>
+                            <td>Balanced Nutrition</td>
+                        </tr>
+
+                        <tr>
+                            <td>Dinner</td>
+                            <td>Soup & Salad</td>
+                            <td>Light Digestion</td>
+                        </tr>
+                    </table>
+
+                </article>
+            </section>
+
+            <!-- Fitness Section -->
+            <section id="fitness">
+                <h2>Fitness Tips</h2>
+
+                <article>
+
+                    <ol>
+                        <li>
+                            Morning Routine
+                            <ul>
+                                <li>Stretching</li>
+                                <li>Walking</li>
+                                <li>Hydration</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            Workout
+                            <ul>
+                                <li>Push-ups</li>
+                                <li>Squats</li>
+                                <li>Plank</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h3>Description List</h3>
+
+                    <dl>
+                        <dt>Cardio</dt>
+                        <dd>Improves heart health.</dd>
+
+                        <dt>Strength Training</dt>
+                        <dd>Builds muscles and bones.</dd>
+                    </dl>
+
+                </article>
+            </section>
+
+            <!-- Multimedia Section -->
+            <section>
+                <h2>Health Multimedia</h2>
+
+                <h3>Audio</h3>
+
+                <audio controls>
+                    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                </audio>
+
+                <h3>Video</h3>
+
+                <video controls width="100%">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                </video>
+
+                <h3>YouTube</h3>
+
+                <iframe src="https://youtu.be/CQqs__oSq6c?si=7MdtGJLNBN4LKrw8"
+                    title="Health Video"
+                    allowfullscreen>
+                </iframe>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact">
+                <h2>Useful Links</h2>
+
+                <p><a href="#top">Bookmark (Back to Top)</a></p>
+
+                <p>
+                    <a href="https://www.cdc.gov" target="_blank">
+                        External Link (CDC)
+                    </a>
+                </p>
+
+                <p>
+                    <a href="mailto:health@example.com">
+                        Email Us
+                    </a>
+                </p>
+
+                <p>
+                    <a href="tel:+911234567890">
+                        Call Us
+                    </a>
+                </p>
+            </section>
+
+            <!-- Registration Form -->
+            <section id="form">
+                <h2>Health Registration Form</h2>
+
+                <form>
+
+                    <label>Name</label>
+                    <input type="text" required placeholder="Enter your name">
+
+                    <label>Email</label>
+                    <input type="email" required placeholder="Enter email">
+
+                    <label>Age</label>
+                    <input type="number" min="1" max="100" required>
+
+                    <label>Gender</label>
+                    <select required>
+                        <option value="">Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+
+                    <label>Health Goal</label>
+                    <textarea required placeholder="Describe your goal"></textarea>
+
+                    <input type="submit" value="Submit">
+
+                </form>
+            </section>
+
+        </main>
+
+        <!-- Sidebar -->
+        <aside>
+            <h2>Health Tips</h2>
+
+            <ul>
+                <li>Drink 3-4L water daily.</li>
+                <li>Sleep 7-8 hours.</li>
+                <li>Exercise 30 minutes.</li>
+                <li>Eat fruits every day.</li>
+                <li>Reduce sugar intake.</li>
+            </ul>
+        </aside>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Exercise:</strong> Design a Website Using HTML5</p>
+        <p>Name: Suryadarshan K J</p>
+        <p>Register No: URK24CS1195</p>
+        <p>&copy; 2026 Health & Wellness Blog</p>
+    </footer>
+
+</body>
+
+</html>

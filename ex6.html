@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health and Wellness</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #eef8f1;
+            color: #24483a;
+            margin: 0;
+            text-align: center;
+        }
+
+        header {
+            background: #2e8b57;
+            color: white;
+            padding: 20px;
+        }
+
+        nav a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        section {
+            background: white;
+            margin: 25px auto;
+            padding: 25px;
+            max-width: 800px;
+            border-radius: 15px;
+        }
+
+        h2 {
+            color: #2e8b57;
+        }
+
+        button {
+            padding: 10px 18px;
+            margin: 5px;
+            background: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #time {
+            font-size: 35px;
+            font-weight: bold;
+            color: #2e8b57;
+        }
+
+        #para {
+            font-size: 20px;
+        }
+
+        #drop {
+            position: relative;
+            left: 0;
+            font-size: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #aaa;
+        }
+
+        footer {
+            background: #2e8b57;
+            color: white;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Health & Wellness</h1>
+    <p>JavaScript Timers, Events and Objects</p>
+
+    <nav>
+        <a href="#clock">Clock</a>
+        <a href="#activities">Activities</a>
+        <a href="#students">Wellness Members</a>
+    </nav>
+</header>
+
+
+<!-- 1. DIGITAL CLOCK -->
+<section id="clock">
+    <h2>Digital Wellness Clock</h2>
+    <p id="time"></p>
+</section>
+
+
+<!-- 2. DYNAMIC BACKGROUND -->
+<section>
+    <h2>Relaxing Background</h2>
+    <p>The page background changes automatically every 5 seconds.</p>
+    <button id="colorBtn" onclick="toggleColors()">Turn Colour Changing ON</button>
+</section>
+
+
+<!-- 3. MOUSE EVENTS -->
+<section>
+    <h2>Wellness Message</h2>
+
+    <p style="font-size: 13px;">Move your mouse over the health message below.</p>
+
+    <p id="para"
+       onmouseover="incSize()"
+       onmouseout="decSize()">
+       Drink enough water every day to stay hydrated and support good health.
+    </p>
+</section>
+
+
+<!-- 4. MOVING IMAGE / OBJECT -->
+<section>
+    <h2>Moving Water Drop</h2>
+
+    <p id="drop">💧</p>
+
+    <button onclick="moveRight()">Move</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="resetDrop()">Reset</button>
+</section>
+
+
+<!-- 5. CLASS AND OBJECT -->
+<section>
+    <h2>Wellness Activity Object</h2>
+
+    <p id="activity"></p>
+</section>
+
+
+<!-- 6. ARRAY OF OBJECTS -->
+<section id="students">
+    <h2>Wellness Members</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Register No.</th>
+            <th>Birth Year</th>
+            <th>Category</th>
+        </tr>
+
+        <tbody id="memberList"></tbody>
+    </table>
+</section>
+
+
+<footer>
+    <p>Health & Wellness | Exercise No. 06 - JavaScript Timers, Events & Objects</p>
+</footer>
+
+
+<script>
+
+    // 1. Digital clock using Date object and setInterval
+    function displayTime() {
+
+        var d = new Date();
+
+        var hour = d.getHours();
+        var minute = d.getMinutes();
+        var second = d.getSeconds();
+
+        document.getElementById("time").innerHTML =
+            hour + ":" + minute + ":" + second;
+    }
+
+    setInterval(displayTime, 1000);
+    displayTime();
+
+
+    // 2. Change background colour every 5 seconds
+    var colorChanging = false;
+    var colorTimer;
+
+    function setBackgroundColor() {
+
+        var red = Math.floor(Math.random() * 255);
+        var green = Math.floor(Math.random() * 255);
+        var blue = Math.floor(Math.random() * 255);
+
+        var color = "rgb(" + red + "," + green + "," + blue + ")";
+
+        document.body.style.backgroundColor = color;
+    }
+
+    function toggleColors() {
+
+        var button = document.getElementById("colorBtn");
+
+        if (colorChanging == false) {
+            colorChanging = true;
+            setBackgroundColor();
+            colorTimer = setInterval(setBackgroundColor, 5000);
+            button.innerHTML = "Turn Colour Changing OFF";
+        } else {
+            colorChanging = false;
+            clearInterval(colorTimer);
+            button.innerHTML = "Turn Colour Changing ON";
+        }
+    }
+
+
+    // 3. Mouse events
+    function incSize() {
+        document.getElementById("para").style.fontSize = "32px";
+    }
+
+    function decSize() {
+        document.getElementById("para").style.fontSize = "20px";
+    }
+
+
+    // 4. Move and stop the water drop
+    var dropObj = document.getElementById("drop");
+    var animate;
+
+    function moveRight() {
+
+        dropObj.style.left =
+            parseInt(dropObj.style.left || 0) + 1 + "px";
+
+        animate = setTimeout(moveRight, 10);
+    }
+
+    function stop() {
+        clearTimeout(animate);
+    }
+
+    function resetDrop() {
+        clearTimeout(animate);
+        dropObj.style.left = "0px";
+    }
+
+
+    // 5. Class and object
+    class Wellness {
+
+        constructor(activity) {
+            this.activity = activity;
+        }
+
+        present() {
+            return "Today's wellness activity: " + this.activity;
+        }
+    }
+
+    var myWellness = new Wellness("Morning Exercise");
+
+    document.getElementById("activity").innerHTML =
+        myWellness.present();
+
+
+    // 6. Array of objects
+    var members = [
+        {name: "Arun", regno: "HW101", year: 1999},
+        {name: "Priya", regno: "HW102", year: 2002},
+        {name: "David", regno: "HW103", year: 1998}
+    ];
+
+    var output = "";
+
+    for (var i = 0; i < members.length; i++) {
+
+        var category;
+
+        if (members[i].year < 2000) {
+            category = "Before 2000";
+        } else {
+            category = "2000 or after";
+        }
+
+        output +=
+            "<tr>" +
+            "<td>" + members[i].name + "</td>" +
+            "<td>" + members[i].regno + "</td>" +
+            "<td>" + members[i].year + "</td>" +
+            "<td>" + category + "</td>" +
+            "</tr>";
+    }
+
+    document.getElementById("memberList").innerHTML = output;
+
+</script>
+
+</body>
+</html>

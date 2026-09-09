@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health and Wellness</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #eef8f1;
+            color: #24483a;
+        }
+
+        header {
+            background: #2e8b57;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 900px;
+        }
+
+        /* 1. Rounded Corners */
+        .card {
+            background: white;
+            padding: 20px;
+            border: 2px solid #72b98b;
+            border-radius: 20px;
+            margin: 15px 0;
+        }
+
+        /* 2. Border Image */
+        .tip {
+            padding: 20px;
+            border: 15px solid transparent;
+            border-image: url("images/border.svg") 30 round;
+            background: white;
+        }
+
+        /* 3. Multiple Backgrounds */
+        .welcome {
+            height: 220px;
+            background-image: url("images/leaf.svg"), url("images/pattern.svg");
+            background-position: right bottom, left top;
+            background-repeat: no-repeat, repeat;
+            padding: 30px;
+        }
+
+        /* 4. Background Size */
+        .fitness {
+            height: 180px;
+            background-image: url("images/fitness.svg");
+            background-size: 180px 130px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #dff2e5;
+        }
+
+        /* 5. Pseudo-classes */
+        input {
+            padding: 10px;
+            margin: 8px;
+        }
+
+        input:focus {
+            border: 3px solid red;
+            background: #e9ffe9;
+        }
+
+        input:required {
+            border: 2px solid blue;
+            background: #fffedb;
+        }
+
+        input[type="email"]:invalid {
+            color: red;
+        }
+
+        input[type="email"]:valid {
+            color: blue;
+        }
+
+        /* 6. Adjacent Sibling */
+        .itemImg {
+            opacity: 0.2;
+            transition: 0.3s;
+        }
+
+        .itemName:hover + .itemImg {
+            opacity: 1;
+        }
+
+        /* 7. nth-child */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #999;
+        }
+
+        tr:nth-child(odd) {
+            background: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background: #dbeeff;
+        }
+
+        tr:hover {
+            background: #ffd966;
+        }
+
+        footer {
+            background: #2e8b57;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Health & Wellness</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#nutrition">Nutrition</a>
+        <a href="#fitness">Fitness</a>
+        <a href="#check">Health Check</a>
+    </nav>
+</header>
+
+<section id="home" class="welcome">
+    <h2>Welcome to Health & Wellness</h2>
+    <p>Simple habits can help us live a healthier and happier life.</p>
+</section>
+
+<section id="nutrition">
+    <h2>Healthy Nutrition</h2>
+
+    <div class="card">
+        <h3>🥗 Eat Balanced Food</h3>
+        <p>Eat vegetables, fruits, grains and protein as part of a balanced diet.</p>
+    </div>
+
+    <div class="card">
+        <h3>💧 Drink Water</h3>
+        <p>Keep yourself hydrated throughout the day.</p>
+    </div>
+
+    <div class="tip">
+        <h3>💡 Healthy Tip</h3>
+        <p>Choose fresh and nutritious food whenever possible.</p>
+    </div>
+</section>
+
+<section id="fitness">
+    <h2>Fitness</h2>
+    <div class="fitness"></div>
+    <p>Walking, stretching and regular exercise can help improve fitness.</p>
+</section>
+
+<section>
+    <h2>Wellness Activities</h2>
+    <p>Hover over an activity to reveal the image:</p>
+
+    <table>
+        <tr>
+            <td class="itemName">Morning Walk</td>
+            <td class="itemImg">🚶 Walking</td>
+        </tr>
+        <tr>
+            <td class="itemName">Yoga</td>
+            <td class="itemImg">🧘 Yoga</td>
+        </tr>
+    </table>
+</section>
+
+<section id="check">
+    <h2>Quick Health Check</h2>
+
+    <form>
+        Name: <input type="text" required><br>
+        Email: <input type="email" placeholder="name@example.com"><br>
+        Age: <input type="number"><br>
+        <input type="submit" value="Submit">
+    </form>
+</section>
+
+<section>
+    <h2>Daily Healthy Habits</h2>
+
+    <table>
+        <tr><td>Drink Water</td><td>Daily</td></tr>
+        <tr><td>Exercise</td><td>Regularly</td></tr>
+        <tr><td>Eat Healthy Food</td><td>Daily</td></tr>
+        <tr><td>Get Enough Sleep</td><td>Every Night</td></tr>
+    </table>
+</section>
+
+<footer>
+    <p>Health & Wellness | Advanced CSS3 Lab Exercise</p>
+</footer>
+
+</body>
+</html>

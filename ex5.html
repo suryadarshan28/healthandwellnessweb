@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health and Wellness</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #eef8f1;
+            margin: 0;
+            color: #24483a;
+        }
+
+        header {
+            background: #2e8b57;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        section {
+            background: white;
+            margin: 25px auto;
+            padding: 25px;
+            max-width: 800px;
+            border-radius: 15px;
+        }
+
+        h2 {
+            color: #2e8b57;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        button {
+            background: #2e8b57;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #236b43;
+        }
+
+        .result {
+            font-weight: bold;
+            color: #17633a;
+        }
+
+        footer {
+            background: #2e8b57;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Health & Wellness</h1>
+    <p>Simple tools for a healthier lifestyle</p>
+
+    <nav>
+        <a href="#water">Water Intake</a>
+        <a href="#words">Health Words</a>
+        <a href="#habits">Healthy Habits</a>
+    </nav>
+</header>
+
+<section>
+    <h2>Welcome</h2>
+    <p>
+        This simple website uses JavaScript and the DOM to make the page
+        interactive.
+    </p>
+    <button id="welcomeBtn">Click Me</button>
+    <p id="message"></p>
+</section>
+
+<section id="water">
+    <h2>Daily Water Intake Calculator</h2>
+
+    <p>Enter your weight to estimate your daily water requirement.</p>
+
+    <label>Weight (kg):</label>
+    <input type="text" id="weight"><br>
+
+    <button id="waterBtn">Calculate Water Intake</button>
+
+    <p>Recommended water intake:
+        <span id="waterResult" class="result"></span>
+    </p>
+</section>
+
+<section id="words">
+    <h2>Health Word Analyzer</h2>
+
+    <p>Enter some health-related words:</p>
+
+    <input type="text" id="sentence"
+           placeholder="Healthy food improves life">
+
+    <button id="wordBtn">Find Words</button>
+
+    <p class="result" id="wordResult"></p>
+</section>
+
+<section id="habits">
+    <h2>Healthy Habits</h2>
+
+    <p>Click a button to choose a healthy habit for today.</p>
+
+    <button class="habitBtn">Drink Water</button>
+    <button class="habitBtn">Exercise</button>
+    <button class="habitBtn">Sleep Well</button>
+
+    <p id="habitMessage"></p>
+</section>
+
+<footer>
+    <p>Health & Wellness | Exercise No. 05 - JavaScript DOM & Events</p>
+</footer>
+
+<script>
+
+    // DOM + click event
+    document.getElementById("welcomeBtn").addEventListener("click", function() {
+        document.getElementById("message").innerHTML =
+            "Great! Start your healthy journey today.";
+    });
+
+
+    // Daily Water Intake Calculator
+    document.getElementById("waterBtn").addEventListener("click", calculateWater);
+
+    function calculateWater() {
+
+        var weight = parseFloat(document.getElementById("weight").value);
+
+        var water = weight * 0.033;
+
+        document.getElementById("waterResult").innerHTML =
+            water.toFixed(2) + " litres per day";
+    }
+
+
+    // String, array and loop
+    document.getElementById("wordBtn").addEventListener("click", findWords);
+
+    function findWords() {
+
+        var sentence = document.getElementById("sentence").value;
+        var words = sentence.split(" ");
+
+        var shortest = words[0];
+        var longest = words[0];
+
+        for (var i = 1; i < words.length; i++) {
+
+            if (words[i].length < shortest.length) {
+                shortest = words[i];
+            }
+
+            if (words[i].length > longest.length) {
+                longest = words[i];
+            }
+        }
+
+        document.getElementById("wordResult").innerHTML =
+            "Shortest: " + shortest + "<br>Longest: " + longest;
+    }
+
+
+    // Event handling for healthy habit buttons
+    var buttons = document.getElementsByClassName("habitBtn");
+
+    for (var i = 0; i < buttons.length; i++) {
+
+        buttons[i].addEventListener("click", function() {
+            document.getElementById("habitMessage").innerHTML =
+                "Good choice! Your habit today is: " + this.innerHTML;
+        });
+    }
+
+</script>
+
+</body>
+</html>

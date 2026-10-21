@@ -1,13 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Health & Wellness Blog</title>
 
     <style>
-
+        /* GENERAL CSS */
         * {
             margin: 0;
             padding: 0;
@@ -16,34 +16,36 @@
         }
 
         body {
-            background: #f4fff7;
-            color: #333;
+            background: #eef8f1;
+            color: #24483a;
             line-height: 1.6;
+            transition: background-color 0.5s;
         }
 
         header {
             background: #2e8b57;
             color: white;
             text-align: center;
-            padding: 25px;
+            padding: 20px;
         }
 
         nav {
             background: #1f6f46;
-            padding: 12px;
+            padding: 10px;
             position: sticky;
             top: 0;
+            z-index: 10;
         }
 
         nav ul {
             display: flex;
             justify-content: center;
-            list-style: none;
             flex-wrap: wrap;
+            list-style: none;
         }
 
         nav li {
-            margin: 10px;
+            padding: 10px;
         }
 
         nav a {
@@ -54,618 +56,1015 @@
 
         nav a:hover {
             text-decoration: underline;
+            color: #ffd966;
         }
 
-
-        .hero {
-            text-align: center;
-            padding: 25px;
-        }
-
-        .hero img {
-            width: 80%;
-            max-width: 900px;
-            border-radius: 15px;
-        }
-
-
-        .container {
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            gap: 20px;
-            padding: 20px;
-        }
-
-
-        section,
-        article,
-        aside {
+        section {
             background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px gray;
+            max-width: 1000px;
+            margin: 25px auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px #ccc;
         }
 
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
+        h2 {
+            color: #2e8b57;
+            margin-bottom: 15px;
         }
 
-        table,
-        th,
-        td {
-            border: 1px solid black;
+        h3 {
+            margin: 12px 0;
         }
 
-        th,
-        td {
-            padding: 10px;
-            text-align: center;
+        p {
+            margin-bottom: 10px;
         }
 
-
-        ul,
-        ol {
-            margin-left: 20px;
+        a {
+            color: #17633a;
         }
 
-
-        audio,
-        video,
-        iframe {
-            width: 100%;
-            margin-top: 10px;
-        }
-
-
-        form input,
-        form select,
-        form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-        }
-
-
-        input[type="radio"],
-        input[type="checkbox"] {
-            width: auto;
-        }
-
-
-        input[type="submit"],
-        input[type="reset"] {
-
-            width: 48%;
-            padding: 12px;
-            border: none;
+        button {
+            background: #2e8b57;
             color: white;
+            border: none;
+            padding: 10px 18px;
+            margin: 5px;
+            border-radius: 5px;
             cursor: pointer;
-
         }
 
-
-        input[type="submit"] {
-            background: green;
+        button:hover {
+            background: #1f6b42;
         }
-
-
-        input[type="reset"] {
-            background: red;
-        }
-
 
         footer {
             background: #2e8b57;
             color: white;
             text-align: center;
             padding: 20px;
+            margin-top: 25px;
         }
 
+        /* HERO: MULTIPLE BACKGROUNDS */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #dff6e3;
+            background-image:
+                url("images/leaf.svg"),
+                url("images/pattern.svg");
+            background-position: right bottom, left top;
+            background-repeat: no-repeat, repeat;
+        }
 
-        @media(max-width:768px) {
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
 
+        /* BACKGROUND SIZE */
+        .fitness-banner {
+            height: 180px;
+            background-color: #dff2e5;
+            background-image: url("images/fitness.svg");
+            background-size: 180px 130px;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 15px 0;
+        }
+
+        /* FLEXBOX LAYOUT */
+        .container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .sidebar {
+            width: 25%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .content {
+            width: 75%;
+        }
+
+        /* CARDS */
+        .cards {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border: 2px solid #72b98b;
+            border-radius: 20px;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* BORDER IMAGE */
+        .tip {
+            padding: 20px;
+            border: 15px solid transparent;
+            border-image: url("images/border.svg") 30 round;
+            background: #f4fff7;
+            margin: 15px 0;
+        }
+
+        /* TABLES AND NTH-CHILD */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #999;
+            text-align: center;
+        }
+
+        tr:nth-child(odd) {
+            background: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background: #dbeeff;
+        }
+
+        tr:hover {
+            background: #ffd966;
+        }
+
+        /* ADJACENT SIBLING SELECTOR */
+        .itemImg {
+            opacity: 0.2;
+            transition: 0.3s;
+        }
+
+        .itemName:hover + .itemImg {
+            opacity: 1;
+        }
+
+        /* FORMS */
+        form {
+            margin-top: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            margin: 8px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="reset"]),
+        form select,
+        form textarea {
+            width: 100%;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        input[type="color"],
+        input[type="file"],
+        input[type="range"] {
+            width: 100%;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border: 3px solid #2e8b57;
+            background: #e9ffe9;
+        }
+
+        input:required {
+            background-color: #fffedb;
+        }
+
+        input[type="email"]:invalid {
+            color: red;
+        }
+
+        input[type="email"]:valid {
+            color: blue;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            width: 120px;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"] {
+            background: #2e8b57;
+        }
+
+        input[type="reset"] {
+            background: #d9534f;
+        }
+
+        .result {
+            font-weight: bold;
+            color: #17633a;
+        }
+
+        #time {
+            font-size: 35px;
+            font-weight: bold;
+            color: #2e8b57;
+            text-align: center;
+        }
+
+        #para {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #drop {
+            position: relative;
+            left: 0;
+            font-size: 40px;
+            text-align: center;
+        }
+
+        /* MULTIMEDIA */
+        iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
+        }
+
+        audio, video {
+            max-width: 100%;
+            margin: 10px 0;
+        }
+
+        /* RESPONSIVE TABLET */
+        @media screen and (max-width: 992px) {
             .container {
-                grid-template-columns: 1fr;
+                flex-direction: column;
             }
 
+            .sidebar, .content {
+                width: 100%;
+            }
+
+            .cards {
+                flex-wrap: wrap;
+            }
+
+            .card {
+                min-width: 40%;
+            }
+        }
+
+        /* RESPONSIVE MOBILE */
+        @media screen and (max-width: 768px) {
             nav ul {
                 flex-direction: column;
                 text-align: center;
             }
 
+            .cards {
+                flex-direction: column;
+            }
+
+            .card {
+                width: 100%;
+            }
+
+            section {
+                margin: 15px;
+                padding: 20px;
+            }
+
+            .hero {
+                padding: 25px;
+            }
+
+            .container {
+                padding: 10px;
+            }
         }
 
+        @media screen and (max-width: 480px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .hero h2 {
+                font-size: 22px;
+            }
+
+            button {
+                max-width: 100%;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 6px;
+            }
+        }
     </style>
-
 </head>
-
 
 <body>
 
-
+<!-- HEADER AND NAVIGATION -->
 <header id="top">
-
     <h1>Health & Wellness Blog</h1>
-
-    <p>
-        Healthy Body • Healthy Mind • Healthy Life
-    </p>
-
+    <p>Healthy Body • Healthy Mind • Healthy Life</p>
+    <p>Learn HTML5, CSS3 and JavaScript</p>
 </header>
 
-
-
 <nav>
-
-<ul>
-
-<li><a href="#home">Home</a></li>
-<li><a href="#nutrition">Nutrition</a></li>
-<li><a href="#fitness">Fitness</a></li>
-<li><a href="#register">Register</a></li>
-<li><a href="#contact">Contact</a></li>
-
-</ul>
-
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#nutrition">Nutrition</a></li>
+        <li><a href="#fitness">Fitness</a></li>
+        <li><a href="#multimedia">Multimedia</a></li>
+        <li><a href="#water">Water Calculator</a></li>
+        <li><a href="#clock">Clock</a></li>
+        <li><a href="#form">Register</a></li>
+    </ul>
 </nav>
 
-
-
+<!-- HERO SECTION -->
 <div class="hero" id="home">
+    <h2>Welcome to Your Wellness Journey</h2>
+    <p>Live Healthy, Live Happy!</p>
 
-<h2>Welcome to Your Wellness Journey</h2>
+    <a href="https://www.who.int" target="_blank">
+        <img
+            src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200"
+            alt="Healthy Food"
+            width="500">
+    </a>
 
-<br>
+    <p>Click the image to visit the WHO website.</p>
 
-<a href="https://www.who.int" target="_blank">
-
-<img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200"
-alt="Healthy Food">
-
-</a>
-
-
-<p>
-Click the image to visit WHO website
-</p>
-
-
+    <button id="welcomeBtn">Click Me</button>
+    <p id="message"></p>
 </div>
 
-
-
-
+<!-- MAIN RESPONSIVE LAYOUT -->
 <div class="container">
 
-
-<main>
-
-
-<section id="nutrition">
-
-<h2>Balanced Nutrition</h2>
-
-
-<article>
-
-<p>
-A healthy diet contains fruits, vegetables, proteins,
-whole grains and enough water.
-</p>
-
-
-<h3>Healthy Meal Table</h3>
-
-
-<table>
-
-<tr>
-<th>Meal</th>
-<th>Food</th>
-<th>Benefit</th>
-</tr>
-
-
-<tr>
-<td>Breakfast</td>
-<td>Oats and Fruits</td>
-<td>Energy</td>
-</tr>
-
-
-<tr>
-<td>Lunch</td>
-<td>Rice and Vegetables</td>
-<td>Balanced Nutrition</td>
-</tr>
-
-
-<tr>
-<td>Dinner</td>
-<td>Soup and Salad</td>
-<td>Easy Digestion</td>
-</tr>
-
-
-</table>
-
-
-</article>
-
-</section>
-
-
-
-
-
-<section id="fitness">
-
-
-<h2>Fitness Tips</h2>
-
-
-<article>
-
-
-<ol>
-
-<li>
-Morning Routine
-
-<ul>
-
-<li>Stretching</li>
-<li>Walking</li>
-<li>Hydration</li>
-
-</ul>
-
-</li>
-
-
-<li>
-Workout
-
-<ul>
-
-<li>Push-ups</li>
-<li>Squats</li>
-<li>Plank</li>
-
-</ul>
-
-</li>
-
-
-</ol>
-
-
-<h3>Description List</h3>
-
-
-<dl>
-
-<dt>Cardio</dt>
-<dd>Improves heart health.</dd>
-
-
-<dt>Strength Training</dt>
-<dd>Builds muscles and bones.</dd>
-
-
-</dl>
-
-
-</article>
-
-
-</section>
-
-
-
-
-
-
-<section>
-
-
-<h2>Health Multimedia</h2>
-
-
-<h3>Audio</h3>
-
-<audio controls>
-
-<source src="https://www.w3schools.com/html/horse.mp3">
-
-</audio>
-
-
-
-<h3>Video</h3>
-
-
-<video controls>
-
-<source src="https://www.w3schools.com/html/mov_bbb.mp4">
-
-</video>
-
-
-
-<h3>YouTube Video</h3>
-
-
-<iframe src="https://www.youtube.com/embed/CQqs__oSq6c"
-allowfullscreen>
-</iframe>
-
-
-
-</section>
-
-
-
-
-
-
-
-<section id="contact">
-
-
-<h2>Useful Links</h2>
-
-
-<p>
-<a href="#top">Back to Top</a>
-</p>
-
-
-<p>
-<a href="https://www.cdc.gov" target="_blank">
-CDC Health Website
-</a>
-</p>
-
-
-<p>
-<a href="mailto:health@example.com">
-Email Us
-</a>
-</p>
-
-
-<p>
-<a href="tel:+911234567890">
-Call Us
-</a>
-</p>
-
-
-</section>
-
-
-
-
-
-
-
-<section id="register">
-
-
-<h2>Health & Wellness Registration Form</h2>
-
-
-<form>
-
-
-<label>Full Name</label>
-
-<input type="text"
-placeholder="Enter your full name"
-pattern="[A-Za-z ]+"
-required>
-
-
-
-<label>Email Address</label>
-
-<input type="email"
-placeholder="example@gmail.com"
-required>
-
-
-
-<label>Create Password</label>
-
-<input type="password"
-required>
-
-
-
-<label>Age</label>
-
-<input type="number"
-min="15"
-max="80"
-required>
-
-
-
-<label>Date of Birth</label>
-
-<input type="date"
-required>
-
-
-
-
-<label>Gender</label><br>
-
-
-<input type="radio" name="gender" required>
-Male
-
-
-<input type="radio" name="gender">
-Female
-
-
-<input type="radio" name="gender">
-Other
-
-
-
-<br><br>
-
-
-<label>Health Goals</label><br>
-
-
-<input type="checkbox">
-Weight Loss
-
-
-<input type="checkbox">
-Fitness
-
-
-<input type="checkbox">
-Healthy Diet
-
-
-
-<br><br>
-
-
-<label>Exercise Frequency</label>
-
-
-<select required>
-
-<option>Select</option>
-<option>Daily</option>
-<option>3-5 Days a Week</option>
-<option>Occasionally</option>
-<option>Rarely</option>
-
-
-</select>
-
-
-
-<label>Medical Notes</label>
-
-
-<textarea rows="4"
-placeholder="Enter health information">
-</textarea>
-
-
-
-<label>Favorite Wellness Theme Color</label>
-
-
-<input type="color">
-
-
-
-<label>Upload Health Report</label>
-
-
-<input type="file">
-
-
-
-<label>Current Fitness Level</label>
-
-
-<input type="range"
-min="0"
-max="100">
-
-
-
-<br>
-
-
-<input type="submit"
-value="Submit">
-
-
-<input type="reset"
-value="Reset">
-
-
-
-</form>
-
-
-</section>
-
-
-
-</main>
-
-
-
-
-
-<aside>
-
-
-<h2>Health Tips</h2>
-
-
-<ul>
-
-<li>Drink 3-4L water daily</li>
-<li>Sleep 7-8 hours</li>
-<li>Exercise 30 minutes</li>
-<li>Eat fruits daily</li>
-<li>Reduce sugar intake</li>
-
-
-</ul>
-
-
-</aside>
-
-
+    <aside class="sidebar">
+        <h2>Health Topics</h2>
+        <ul>
+            <li>Healthy Diet</li>
+            <li>Daily Exercise</li>
+            <li>Mental Wellness</li>
+            <li>Yoga and Meditation</li>
+            <li>Quality Sleep</li>
+            <li>Drink More Water</li>
+        </ul>
+
+        <h3>Daily Health Tips</h3>
+        <ul>
+            <li>Drink enough water.</li>
+            <li>Sleep 7–8 hours.</li>
+            <li>Exercise regularly.</li>
+            <li>Eat fruits and vegetables.</li>
+            <li>Reduce excess sugar.</li>
+        </ul>
+    </aside>
+
+    <main class="content">
+        <h2>Why Health Matters?</h2>
+        <p>
+            Good health is essential for a happy life. Nutritious food,
+            exercise, sleep and stress management support well-being.
+        </p>
+
+        <div class="cards">
+            <article class="card">
+                <img
+                    src="https://picsum.photos/300/200?healthyfood"
+                    alt="Healthy Food">
+                <h3>Healthy Nutrition</h3>
+                <p>Eat fruits, vegetables, proteins and whole grains.</p>
+                <a href="#nutrition"><button>Read More</button></a>
+            </article>
+
+            <article class="card">
+                <img
+                    src="https://picsum.photos/300/200?exercise"
+                    alt="Exercise">
+                <h3>Daily Exercise</h3>
+                <p>Regular physical activity helps keep your body fit.</p>
+                <a href="#fitness"><button>Read More</button></a>
+            </article>
+
+            <article class="card">
+                <img
+                    src="https://picsum.photos/300/200?sleep"
+                    alt="Sleep">
+                <h3>Quality Sleep</h3>
+                <p>Good sleep supports recovery and concentration.</p>
+                <a href="#habits"><button>Read More</button></a>
+            </article>
+        </div>
+    </main>
 </div>
 
+<!-- NUTRITION -->
+<section id="nutrition">
+    <h2>Balanced Nutrition</h2>
 
+    <article class="card">
+        <h3>🥗 Eat Balanced Food</h3>
+        <p>
+            A healthy diet includes fruits, vegetables, proteins,
+            whole grains and adequate water.
+        </p>
+    </article>
 
+    <article class="card">
+        <h3>💧 Drink Water</h3>
+        <p>Stay hydrated throughout the day.</p>
+    </article>
 
+    <div class="tip">
+        <h3>💡 Healthy Tip</h3>
+        <p>Choose fresh and nutritious food whenever possible.</p>
+    </div>
 
+    <h3>Healthy Meal Table</h3>
+    <table>
+        <tr>
+            <th>Meal</th>
+            <th>Food</th>
+            <th>Benefit</th>
+        </tr>
+        <tr>
+            <td>Breakfast</td>
+            <td>Oats and Fruits</td>
+            <td>Energy</td>
+        </tr>
+        <tr>
+            <td>Lunch</td>
+            <td>Rice and Vegetables</td>
+            <td>Balanced Nutrition</td>
+        </tr>
+        <tr>
+            <td>Dinner</td>
+            <td>Soup and Salad</td>
+            <td>Light Digestion</td>
+        </tr>
+    </table>
+</section>
 
+<!-- FITNESS AND LISTS -->
+<section id="fitness">
+    <h2>Fitness Tips</h2>
+
+    <div class="fitness-banner"></div>
+
+    <p>Walking, stretching and exercise help improve fitness.</p>
+
+    <h3>Morning Routine</h3>
+    <ol>
+        <li>Stretching</li>
+        <li>Walking</li>
+        <li>Hydration</li>
+    </ol>
+
+    <h3>Workout</h3>
+    <ul>
+        <li>Push-ups</li>
+        <li>Squats</li>
+        <li>Plank</li>
+    </ul>
+
+    <h3>Description List</h3>
+    <dl>
+        <dt><strong>Cardio</strong></dt>
+        <dd>Improves heart health.</dd>
+
+        <dt><strong>Strength Training</strong></dt>
+        <dd>Builds muscles and bones.</dd>
+    </dl>
+
+    <h3>Wellness Activities</h3>
+    <p>Hover over an activity to reveal its description.</p>
+
+    <table>
+        <tr>
+            <td class="itemName">Morning Walk</td>
+            <td class="itemImg">🚶 Walking</td>
+        </tr>
+        <tr>
+            <td class="itemName">Yoga</td>
+            <td class="itemImg">🧘 Yoga</td>
+        </tr>
+    </table>
+</section>
+
+<!-- MULTIMEDIA -->
+<section id="multimedia">
+    <h2>Health Multimedia</h2>
+
+    <h3>Audio</h3>
+    <audio controls>
+        <source
+            src="https://www.w3schools.com/html/horse.mp3"
+            type="audio/mpeg">
+        Your browser does not support audio.
+    </audio>
+
+    <h3>Video</h3>
+    <video controls width="100%">
+        <source
+            src="https://www.w3schools.com/html/mov_bbb.mp4"
+            type="video/mp4">
+        Your browser does not support video.
+    </video>
+
+    <h3>YouTube Video</h3>
+    <iframe
+        src="https://www.youtube.com/embed/CQqs__oSq6c"
+        title="Health Video"
+        allowfullscreen>
+    </iframe>
+</section>
+
+<!-- USEFUL LINKS -->
+<section id="contact">
+    <h2>Useful Links</h2>
+
+    <p><a href="#top">Bookmark: Back to Top</a></p>
+
+    <p>
+        <a href="https://www.cdc.gov" target="_blank">
+            External Link: CDC
+        </a>
+    </p>
+
+    <p><a href="mailto:health@example.com">Email Us</a></p>
+    <p><a href="tel:+911234567890">Call Us</a></p>
+</section>
+
+<!-- QUICK HEALTH CHECK -->
+<section id="check">
+    <h2>Quick Health Check</h2>
+
+    <form>
+        <label for="quickName">Name</label>
+        <input type="text" id="quickName" required>
+
+        <label for="quickEmail">Email</label>
+        <input type="email" id="quickEmail"
+               placeholder="name@example.com" required>
+
+        <label for="quickAge">Age</label>
+        <input type="number" id="quickAge" min="1" max="100">
+
+        <input type="submit" value="Submit">
+    </form>
+</section>
+
+<!-- FULL REGISTRATION FORM -->
+<section id="form">
+    <h2>Health & Wellness Registration Form</h2>
+
+    <form id="registrationForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name"
+               placeholder="Enter your full name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email"
+               placeholder="example@gmail.com" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"
+               required>
+
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age"
+               min="18" max="80" required>
+
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob">
+
+        <label>Gender</label><br>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Other"> Other
+        <br><br>
+
+        <label>Health Interests</label><br>
+        <input type="checkbox" name="interest" value="Nutrition">
+        Nutrition
+
+        <input type="checkbox" name="interest" value="Fitness">
+        Fitness
+
+        <input type="checkbox" name="interest" value="Yoga">
+        Yoga
+
+        <input type="checkbox" name="interest" value="Meditation">
+        Meditation
+        <br><br>
+
+        <label for="goal">Health Goal</label>
+        <select id="goal" name="goal">
+            <option>Weight Loss</option>
+            <option>Weight Gain</option>
+            <option>Muscle Building</option>
+            <option>Stay Fit</option>
+            <option>Improve Mental Health</option>
+        </select>
+
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="4"
+                  placeholder="Enter your address"></textarea>
+
+        <label for="color">Favorite Theme Color</label>
+        <input type="color" id="color" name="color">
+
+        <label for="report">Upload Health Report</label>
+        <input type="file" id="report" name="report">
+
+        <label for="level">Fitness Level</label>
+        <input type="range" id="level" name="level"
+               min="0" max="100">
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+</section>
+
+<!-- JAVASCRIPT WATER CALCULATOR -->
+<section id="water">
+    <h2>Daily Water Intake Calculator</h2>
+
+    <p>Enter your weight to estimate your daily water requirement.</p>
+
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" min="1" step="any">
+
+    <button id="waterBtn">Calculate Water Intake</button>
+
+    <p>
+        Recommended water intake:
+        <span id="waterResult" class="result"></span>
+    </p>
+</section>
+
+<!-- JAVASCRIPT STRING AND ARRAY -->
+<section id="words">
+    <h2>Health Word Analyzer</h2>
+
+    <p>Enter a sentence to find the shortest and longest words.</p>
+
+    <input type="text" id="sentence"
+           placeholder="Healthy food improves life">
+
+    <button id="wordBtn">Find Words</button>
+
+    <p id="wordResult" class="result"></p>
+</section>
+
+<!-- HEALTHY HABITS AND EVENTS -->
+<section id="habits">
+    <h2>Healthy Habits</h2>
+
+    <p>Choose a healthy habit for today.</p>
+
+    <button class="habitBtn">Drink Water</button>
+    <button class="habitBtn">Exercise</button>
+    <button class="habitBtn">Sleep Well</button>
+
+    <p id="habitMessage" class="result"></p>
+</section>
+
+<!-- DIGITAL CLOCK -->
+<section id="clock">
+    <h2>Digital Wellness Clock</h2>
+    <p id="time"></p>
+</section>
+
+<!-- DYNAMIC BACKGROUND -->
+<section>
+    <h2>Relaxing Background</h2>
+    <p>The background changes automatically every five seconds.</p>
+
+    <button id="colorBtn" onclick="toggleColors()">
+        Turn Colour Changing ON
+    </button>
+</section>
+
+<!-- MOUSE EVENTS -->
+<section>
+    <h2>Wellness Message</h2>
+    <p>Move your mouse over the message.</p>
+
+    <p id="para"
+       onmouseover="incSize()"
+       onmouseout="decSize()">
+        Drink enough water every day to stay hydrated.
+    </p>
+</section>
+
+<!-- MOVING OBJECT -->
+<section>
+    <h2>Moving Water Drop</h2>
+
+    <p id="drop">💧</p>
+
+    <button onclick="moveRight()">Move</button>
+    <button onclick="stopDrop()">Stop</button>
+    <button onclick="resetDrop()">Reset</button>
+</section>
+
+<!-- CLASS AND OBJECT -->
+<section>
+    <h2>Wellness Activity Object</h2>
+    <p id="activity" class="result"></p>
+</section>
+
+<!-- ARRAY OF OBJECTS -->
+<section id="members">
+    <h2>Wellness Members</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Register No.</th>
+            <th>Birth Year</th>
+            <th>Category</th>
+        </tr>
+
+        <tbody id="memberList"></tbody>
+    </table>
+</section>
+
+<!-- FOOTER -->
 <footer>
-
-<p>
-<strong>Exercise:</strong> Design a Website Using HTML5
-</p>
-
-<p>
-Name: Suryadarshan K J
-</p>
-
-<p>
-Register No: URK24CS1195
-</p>
-
-<p>
-&copy; 2026 Health & Wellness Blog
-</p>
-
-
+    <h3>HTML5, CSS3 and JavaScript Laboratory</h3>
+    <p><strong>Name:</strong> Suryadarshan K J</p>
+    <p><strong>Register No:</strong> URK24CS1195</p>
+    <p>&copy; 2026 Health & Wellness Blog</p>
 </footer>
 
+<script>
+    // 1. DOM AND CLICK EVENT
+    document.getElementById("welcomeBtn").addEventListener(
+        "click", function() {
+            document.getElementById("message").textContent =
+                "Great! Start your healthy journey today.";
+        }
+    );
 
+    // 2. WATER INTAKE CALCULATOR
+    document.getElementById("waterBtn").addEventListener(
+        "click", calculateWater
+    );
+
+    function calculateWater() {
+        var weight = parseFloat(
+            document.getElementById("weight").value
+        );
+
+        if (isNaN(weight) || weight <= 0) {
+            document.getElementById("waterResult").textContent =
+                "Please enter a valid weight.";
+            return;
+        }
+
+        var water = weight * 0.033;
+
+        document.getElementById("waterResult").textContent =
+            water.toFixed(2) + " litres per day (estimate)";
+    }
+
+    // 3. STRING, ARRAY AND LOOP
+    document.getElementById("wordBtn").addEventListener(
+        "click", findWords
+    );
+
+    function findWords() {
+        var sentence = document.getElementById("sentence").value.trim();
+
+        if (sentence === "") {
+            document.getElementById("wordResult").textContent =
+                "Please enter a sentence.";
+            return;
+        }
+
+        var words = sentence.split(/\s+/);
+        var shortest = words[0];
+        var longest = words[0];
+
+        for (var i = 1; i < words.length; i++) {
+            if (words[i].length < shortest.length) {
+                shortest = words[i];
+            }
+
+            if (words[i].length > longest.length) {
+                longest = words[i];
+            }
+        }
+
+        document.getElementById("wordResult").textContent =
+            "Shortest: " + shortest + " | Longest: " + longest;
+    }
+
+    // 4. EVENT HANDLING FOR HABIT BUTTONS
+    var buttons = document.getElementsByClassName("habitBtn");
+
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function() {
+            document.getElementById("habitMessage").textContent =
+                "Good choice! Your habit today is: " +
+                this.textContent;
+        });
+    }
+
+    // 5. DIGITAL CLOCK USING DATE AND setInterval
+    function displayTime() {
+        var d = new Date();
+
+        var hour = String(d.getHours()).padStart(2, "0");
+        var minute = String(d.getMinutes()).padStart(2, "0");
+        var second = String(d.getSeconds()).padStart(2, "0");
+
+        document.getElementById("time").textContent =
+            hour + ":" + minute + ":" + second;
+    }
+
+    setInterval(displayTime, 1000);
+    displayTime();
+
+    // 6. CHANGE BACKGROUND COLOUR
+    var colorChanging = false;
+    var colorTimer;
+
+    function setBackgroundColor() {
+        var red = Math.floor(Math.random() * 256);
+        var green = Math.floor(Math.random() * 256);
+        var blue = Math.floor(Math.random() * 256);
+
+        document.body.style.backgroundColor =
+            "rgb(" + red + "," + green + "," + blue + ")";
+    }
+
+    function toggleColors() {
+        var button = document.getElementById("colorBtn");
+
+        if (colorChanging === false) {
+            colorChanging = true;
+            setBackgroundColor();
+
+            colorTimer = setInterval(setBackgroundColor, 5000);
+
+            button.textContent = "Turn Colour Changing OFF";
+        } else {
+            colorChanging = false;
+            clearInterval(colorTimer);
+
+            document.body.style.backgroundColor = "#eef8f1";
+            button.textContent = "Turn Colour Changing ON";
+        }
+    }
+
+    // 7. MOUSE EVENTS
+    function incSize() {
+        document.getElementById("para").style.fontSize = "32px";
+    }
+
+    function decSize() {
+        document.getElementById("para").style.fontSize = "20px";
+    }
+
+    // 8. MOVE, STOP AND RESET WATER DROP
+    var dropObj = document.getElementById("drop");
+    var animate;
+
+    function moveRight() {
+        clearTimeout(animate);
+
+        function move() {
+            var position = parseInt(dropObj.style.left) || 0;
+
+            dropObj.style.left = position + 1 + "px";
+            animate = setTimeout(move, 10);
+        }
+
+        move();
+    }
+
+    function stopDrop() {
+        clearTimeout(animate);
+    }
+
+    function resetDrop() {
+        clearTimeout(animate);
+        dropObj.style.left = "0px";
+    }
+
+    // 9. CLASS AND OBJECT
+    class Wellness {
+        constructor(activity) {
+            this.activity = activity;
+        }
+
+        present() {
+            return "Today's wellness activity: " + this.activity;
+        }
+    }
+
+    var myWellness = new Wellness("Morning Exercise");
+
+    document.getElementById("activity").textContent =
+        myWellness.present();
+
+    // 10. ARRAY OF OBJECTS
+    var members = [
+        {name: "Arun", regno: "HW101", year: 1999},
+        {name: "Priya", regno: "HW102", year: 2002},
+        {name: "David", regno: "HW103", year: 1998}
+    ];
+
+    var output = "";
+
+    for (var i = 0; i < members.length; i++) {
+        var category;
+
+        if (members[i].year < 2000) {
+            category = "Before 2000";
+        } else {
+            category = "2000 or after";
+        }
+
+        output +=
+            "<tr>" +
+            "<td>" + members[i].name + "</td>" +
+            "<td>" + members[i].regno + "</td>" +
+            "<td>" + members[i].year + "</td>" +
+            "<td>" + category + "</td>" +
+            "</tr>";
+    }
+
+    document.getElementById("memberList").innerHTML = output;
+
+    // 11. FORM SUBMISSION DEMONSTRATION
+    document.getElementById("registrationForm").addEventListener(
+        "submit", function(event) {
+            event.preventDefault();
+            alert("Registration form submitted successfully!");
+        }
+    );
+
+    // Prevent page reload when submitting the quick health check.
+    document.getElementById("check").querySelector("form")
+        .addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Health check submitted successfully!");
+        });
+</script>
 
 </body>
-
 </html>

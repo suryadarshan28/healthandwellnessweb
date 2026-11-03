@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Health & Wellness</title>
+
+    <!-- AngularJS Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8f4;
+            margin: 0;
+        }
+
+        header {
+            background-color: #24845a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #185c3b;
+            text-align: center;
+            padding: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #b8f5d0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 25px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px #cccccc;
+        }
+
+        h2 {
+            color: #24845a;
+        }
+
+        input, select {
+            width: 95%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+
+        input[type="radio"] {
+            width: auto;
+        }
+
+        button {
+            background-color: #24845a;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:disabled {
+            background-color: #aaaaaa;
+            cursor: not-allowed;
+        }
+
+        .error {
+            color: red;
+            font-size: 13px;
+        }
+
+        .success {
+            color: green;
+            background-color: #e2f5e9;
+            padding: 12px;
+            margin-top: 15px;
+        }
+
+        .content-box {
+            background-color: #e2f5e9;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #185c3b;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+
+</head>
+
+<body ng-app="wellnessApp" ng-controller="MainController">
+
+    <header>
+        <h1>Health & Wellness</h1>
+        <p>Your Journey Towards a Healthy Lifestyle</p>
+    </header>
+
+    <!-- Navigation -->
+
+    <nav>
+        <a href="#!/home">Home</a>
+        <a href="#!/nutrition">Nutrition</a>
+        <a href="#!/fitness">Fitness</a>
+        <a href="#!/register">Register</a>
+    </nav>
+
+    <!-- AngularJS Routing -->
+
+    <div ng-view></div>
+
+    <footer>
+        <p>Health & Wellness Website</p>
+        <p>Stay Healthy, Stay Happy!</p>
+    </footer>
+
+
+    <script>
+
+        // Creating AngularJS Application
+
+        var app = angular.module("wellnessApp", ["ngRoute"]);
+
+
+        // Configuring Routes
+
+        app.config(function($routeProvider) {
+
+            $routeProvider
+
+                .when("/home", {
+                    templateUrl: "home.html"
+                })
+
+                .when("/nutrition", {
+                    templateUrl: "nutrition.html"
+                })
+
+                .when("/fitness", {
+                    templateUrl: "fitness.html"
+                })
+
+                .when("/register", {
+                    templateUrl: "register.html"
+                })
+
+                .otherwise({
+                    redirectTo: "/home"
+                });
+
+        });
+
+
+        // Main Controller
+
+        app.controller("MainController", function($scope) {
+
+            $scope.submitted = false;
+
+            $scope.submitForm = function() {
+
+                $scope.submitted = true;
+
+                $scope.successMessage =
+                    "Registration completed successfully!";
+
+            };
+
+        });
+
+    </script>
+
+
+    <!-- PAGE 1: HOME -->
+
+    <script type="text/ng-template" id="home.html">
+
+        <div class="container">
+
+            <h2>Welcome to Health & Wellness</h2>
+
+            <p>
+                Health and wellness are important for living
+                a happy and healthy life.
+            </p>
+
+            <p>
+                Maintaining a balanced diet, exercising regularly
+                and getting enough sleep helps improve overall health.
+            </p>
+
+            <div class="content-box">
+
+                <h3>Healthy Lifestyle Tips</h3>
+
+                <ul>
+                    <li>Drink enough water every day.</li>
+                    <li>Eat fresh fruits and vegetables.</li>
+                    <li>Exercise regularly.</li>
+                    <li>Get sufficient sleep.</li>
+                    <li>Avoid unhealthy food habits.</li>
+                </ul>
+
+            </div>
+
+            <h3>Healthy Living</h3>
+
+            <img
+                src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900"
+                alt="Healthy food">
+
+        </div>
+
+    </script>
+
+
+    <!-- PAGE 2: NUTRITION -->
+
+    <script type="text/ng-template" id="nutrition.html">
+
+        <div class="container">
+
+            <h2>Nutrition and Healthy Diet</h2>
+
+            <p>
+                A balanced diet provides the nutrients needed
+                for proper body functioning.
+            </p>
+
+            <div class="content-box">
+
+                <h3>Important Nutrients</h3>
+
+                <ul>
+                    <li>Protein - Helps build and repair muscles.</li>
+                    <li>Carbohydrates - Provides energy.</li>
+                    <li>Vitamins - Supports body functions.</li>
+                    <li>Minerals - Helps maintain good health.</li>
+                    <li>Fibre - Supports digestion.</li>
+                </ul>
+
+            </div>
+
+            <h3>Healthy Food Choices</h3>
+
+            <img
+                src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=900"
+                alt="Healthy vegetables and salad">
+
+        </div>
+
+    </script>
+
+
+    <!-- PAGE 3: FITNESS -->
+
+    <script type="text/ng-template" id="fitness.html">
+
+        <div class="container">
+
+            <h2>Fitness and Exercise</h2>
+
+            <p>
+                Regular physical activity helps maintain
+                a healthy body and improves fitness.
+            </p>
+
+            <div class="content-box">
+
+                <h3>Daily Fitness Activities</h3>
+
+                <ul>
+                    <li>Walking</li>
+                    <li>Running</li>
+                    <li>Cycling</li>
+                    <li>Yoga</li>
+                    <li>Strength Training</li>
+                </ul>
+
+            </div>
+
+            <h3>Importance of Exercise</h3>
+
+            <img
+                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900"
+                alt="Fitness and exercise">
+
+            <p>
+                Try to include regular physical activity
+                in your daily routine.
+            </p>
+
+        </div>
+
+    </script>
+
+
+    <!-- PAGE 4: REGISTRATION FORM -->
+
+    <script type="text/ng-template" id="register.html">
+
+        <div class="container">
+
+            <h2>Health & Wellness Registration</h2>
+
+            <form name="registrationForm"
+                  ng-submit="submitForm()"
+                  novalidate>
+
+                <!-- Name -->
+
+                <label>Name</label>
+
+                <input type="text"
+                       name="username"
+                       ng-model="user.name"
+                       ng-pattern="/^[A-Za-z ]+$/"
+                       required
+                       placeholder="Enter your name">
+
+                <div class="error"
+                     ng-show="registrationForm.username.$touched &&
+                     registrationForm.username.$invalid">
+
+                    Please enter a valid name without numbers.
+
+                </div>
+
+
+                <!-- Password -->
+
+                <label>Password</label>
+
+                <input type="password"
+                       name="password"
+                       ng-model="user.password"
+                       ng-pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$/"
+                       required
+                       placeholder="Enter your password">
+
+                <div class="error"
+                     ng-show="registrationForm.password.$touched &&
+                     registrationForm.password.$invalid">
+
+                    Password must contain at least 8 characters,
+                    one uppercase, one lowercase and one number.
+
+                </div>
+
+
+                <!-- Age -->
+
+                <label>Age</label>
+
+                <input type="number"
+                       name="age"
+                       ng-model="user.age"
+                       min="18"
+                       max="30"
+                       required
+                       placeholder="Enter your age">
+
+                <div class="error"
+                     ng-show="registrationForm.age.$touched &&
+                     registrationForm.age.$invalid">
+
+                    Age must be between 18 and 30.
+
+                </div>
+
+
+                <!-- Mobile Number -->
+
+                <label>Mobile Number</label>
+
+                <input type="text"
+                       name="mobile"
+                       ng-model="user.mobile"
+                       ng-pattern="/^[0-9]{10}$/"
+                       required
+                       placeholder="Enter 10 digit mobile number">
+
+                <div class="error"
+                     ng-show="registrationForm.mobile.$touched &&
+                     registrationForm.mobile.$invalid">
+
+                    Mobile number must contain exactly 10 digits.
+
+                </div>
+
+
+                <!-- Email -->
+
+                <label>Email</label>
+
+                <input type="email"
+                       name="email"
+                       ng-model="user.email"
+                       required
+                       placeholder="Enter your email">
+
+                <div class="error"
+                     ng-show="registrationForm.email.$touched &&
+                     registrationForm.email.$invalid">
+
+                    Please enter a valid email address.
+
+                </div>
+
+
+                <!-- Gender -->
+
+                <label>Gender</label>
+
+                <br>
+
+                <input type="radio"
+                       name="gender"
+                       ng-model="user.gender"
+                       value="Male"
+                       required> Male
+
+                <input type="radio"
+                       name="gender"
+                       ng-model="user.gender"
+                       value="Female"
+                       required> Female
+
+                <div class="error"
+                     ng-show="registrationForm.gender.$touched &&
+                     registrationForm.gender.$invalid">
+
+                    Please select your gender.
+
+                </div>
+
+                <br><br>
+
+
+                <!-- State -->
+
+                <label>State</label>
+
+                <select name="state"
+                        ng-model="user.state"
+                        required>
+
+                    <option value="">Select State</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Telangana">Telangana</option>
+
+                </select>
+
+                <div class="error"
+                     ng-show="registrationForm.state.$touched &&
+                     registrationForm.state.$invalid">
+
+                    Please select your state.
+
+                </div>
+
+                <br><br>
+
+
+                <!-- Submit -->
+
+                <button type="submit"
+                        ng-disabled="registrationForm.$invalid">
+
+                    Submit
+
+                </button>
+
+                <div class="success"
+                     ng-show="submitted">
+
+                    {{successMessage}}
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </script>
+
+</body>
+</html>

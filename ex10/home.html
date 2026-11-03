@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Health & Wellness Registration</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #24845a;
+        }
+
+        .container {
+            width: 400px;
+            max-width: 90%;
+            margin: 30px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #cccccc;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            color: #185c3b;
+        }
+
+        input, select {
+            width: 95%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+
+        input[type="radio"] {
+            width: auto;
+        }
+
+        button {
+            width: 100%;
+            background-color: #24845a;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #185c3b;
+        }
+
+        .radio-group {
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Health & Wellness Registration</h1>
+
+    <div class="container">
+
+        <form action="/server" method="POST">
+
+            <label>Name *</label>
+            <input
+                type="text"
+                name="name"
+                required
+                pattern="[A-Za-z ]+"
+                title="Enter a name using letters only"
+                placeholder="Enter your name">
+
+            <label>Email *</label>
+            <input
+                type="email"
+                name="email"
+                required
+                placeholder="Enter your email">
+
+            <label>Age *</label>
+            <input
+                type="number"
+                name="age"
+                min="13"
+                max="100"
+                required
+                placeholder="Enter your age">
+
+            <label>Mobile Number *</label>
+            <input
+                type="tel"
+                name="mobile"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                required
+                title="Enter exactly 10 digits"
+                placeholder="Enter your mobile number">
+
+            <label>Gender *</label>
+
+            <div class="radio-group">
+                <input
+                    type="radio"
+                    name="gender"
+                    value="Male"
+                    required>
+                Male
+
+                <input
+                    type="radio"
+                    name="gender"
+                    value="Female">
+                Female
+            </div>
+
+            <label>State *</label>
+
+            <select name="state" required>
+                <option value="">Select your state</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Telangana">Telangana</option>
+            </select>
+
+            <label>Wellness Goal *</label>
+
+            <select name="goal" required>
+                <option value="">Select your goal</option>
+                <option value="Fitness">Fitness</option>
+                <option value="Healthy Nutrition">Healthy Nutrition</option>
+                <option value="Weight Management">Weight Management</option>
+                <option value="Yoga and Meditation">Yoga and Meditation</option>
+                <option value="Better Sleep">Better Sleep</option>
+            </select>
+
+            <button type="submit">Submit Registration</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

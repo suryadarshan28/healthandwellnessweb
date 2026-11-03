@@ -1,10 +1,16 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="wellnessApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health & Wellness Blog</title>
+
+    <!-- Exercise 7: jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Exercises 8 and 9: AngularJS and AngularJS Routing -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.min.js"></script>
 
     <style>
         /* GENERAL CSS */
@@ -128,13 +134,7 @@
 
         /* BACKGROUND SIZE */
         .fitness-banner {
-            height: 180px;
-            background-color: #dff2e5;
-            background-image: url("images/fitness.svg");
-            background-size: 180px 130px;
-            background-position: center;
-            background-repeat: no-repeat;
-            margin: 15px 0;
+            display:none;
         }
 
         /* FLEXBOX LAYOUT */
@@ -404,6 +404,68 @@
                 padding: 6px;
             }
         }
+
+        /* EXERCISES 7-10: INTEGRATED FEATURES */
+        .exercise-box {
+            background: #f4fff7;
+            border: 1px solid #b7dfc4;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+        }
+
+        .exercise-box input,
+        .exercise-box select,
+        .exercise-box textarea {
+            max-width: 100%;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 22px;
+            background: #dcefe2;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 12px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0;
+            background: #2e8b57;
+            transition: width 0.25s;
+        }
+
+        .angular-error {
+            color: #c62828;
+            font-size: 14px;
+        }
+
+        .route-links a {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 12px;
+            background: #e1f3e6;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .route-view {
+            padding: 18px;
+            margin-top: 15px;
+            background: #f8fff9;
+            border-radius: 10px;
+            border: 1px solid #c8e6c9;
+        }
+
+        .exercise-box .delete {
+            background: #e53935;
+        }
+
+        .exercise-box .delete:hover {
+            background: #b71c1c;
+        }
+
     </style>
 </head>
 
@@ -425,6 +487,10 @@
         <li><a href="#water">Water Calculator</a></li>
         <li><a href="#clock">Clock</a></li>
         <li><a href="#form">Register</a></li>
+        <li><a href="#exercise7">Exercise 7</a></li>
+        <li><a href="#exercise8">Exercise 8</a></li>
+        <li><a href="#exercise9">Exercise 9</a></li>
+        <li><a href="#exercise10">Exercise 10</a></li>
     </ul>
 </nav>
 
@@ -435,7 +501,7 @@
 
     <a href="https://www.who.int" target="_blank">
         <img
-            src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdeipVNK71nv_NIWFbc3paMmIlV3ORy-HgBap98J2XPw&s=10"
             alt="Healthy Food"
             width="500">
     </a>
@@ -480,7 +546,7 @@
         <div class="cards">
             <article class="card">
                 <img
-                    src="https://picsum.photos/300/200?healthyfood"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE3rYF0lNY_jx1xYseux3AQLH6Lqzb6JAQXpMk74qRCw&s=10"
                     alt="Healthy Food">
                 <h3>Healthy Nutrition</h3>
                 <p>Eat fruits, vegetables, proteins and whole grains.</p>
@@ -489,7 +555,7 @@
 
             <article class="card">
                 <img
-                    src="https://picsum.photos/300/200?exercise"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3qneeJ30qPCPobN7a7tD5iiqPZstM5pYu7CdOyntVSA&s=10"
                     alt="Exercise">
                 <h3>Daily Exercise</h3>
                 <p>Regular physical activity helps keep your body fit.</p>
@@ -498,7 +564,7 @@
 
             <article class="card">
                 <img
-                    src="https://picsum.photos/300/200?sleep"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI7T0cnym5vTIzvCGPXoKFN2wOvjvOQ0rMApV4JVBUqw&s=10"
                     alt="Sleep">
                 <h3>Quality Sleep</h3>
                 <p>Good sleep supports recovery and concentration.</p>
@@ -607,25 +673,26 @@
 
     <h3>Audio</h3>
     <audio controls>
-        <source
-            src="https://www.w3schools.com/html/horse.mp3"
-            type="audio/mpeg">
+        <source src="hwa.mp3" type="audio/mpeg">
         Your browser does not support audio.
     </audio>
 
     <h3>Video</h3>
     <video controls width="100%">
-        <source
-            src="https://www.w3schools.com/html/mov_bbb.mp4"
-            type="video/mp4">
+         <source src="hwv.mp4" type="video/mp4">
         Your browser does not support video.
     </video>
 
     <h3>YouTube Video</h3>
-    <iframe
-        src="https://www.youtube.com/embed/CQqs__oSq6c"
-        title="Health Video"
-        allowfullscreen>
+    <iframe 
+    width="100%"
+    height="315"
+    src="https://www.youtube.com/embed/xyQY8a-ng6g"
+    title="Health Video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
     </iframe>
 </section>
 
@@ -840,6 +907,209 @@
         <tbody id="memberList"></tbody>
     </table>
 </section>
+
+
+<!-- EXERCISE 7: JQUERY - DAILY WATER INTAKE TRACKER -->
+<section id="exercise7">
+    <h2>Exercise 7 – Daily Water Intake Tracker (jQuery)</h2>
+    <p>Set your daily water goal and record each glass of water you drink.</p>
+
+    <div class="exercise-box" id="waterTracker">
+        <label for="waterGoal">Daily Goal (litres):</label>
+        <input type="number" id="waterGoal" min="0.25" step="0.25" value="2">
+
+        <h3>Water Consumed: <span id="waterConsumed">0</span> ml</h3>
+        <p>Remaining: <span id="waterRemaining">2000</span> ml</p>
+
+        <div class="progress-track">
+            <div class="progress-fill" id="waterProgress"></div>
+        </div>
+        <p id="waterStatus" class="result">Start tracking your water intake!</p>
+
+        <button type="button" id="addWater">Add 250 ml</button>
+        <button type="button" id="resetWater">Reset</button>
+    </div>
+</section>
+
+<!-- EXERCISE 8: ANGULARJS DIRECTIVES -->
+<section id="exercise8" ng-controller="wellnessController">
+    <h2>Exercise 8 – AngularJS Directives</h2>
+    <p>Wellness feedback, sleep duration calculation and a daily activity list.</p>
+
+    <div class="exercise-box">
+        <h3>1. Wellness Feedback</h3>
+        <input type="text" ng-model="newComment" placeholder="Enter your feedback">
+        <button type="button" ng-click="addComment()">Add Comment</button>
+
+        <ul>
+            <li ng-repeat="comment in comments track by $index">
+                {{comment}}
+                <button type="button" class="delete" ng-click="deleteComment($index)">Delete</button>
+            </li>
+        </ul>
+        <p ng-if="comments.length === 0">No feedback added yet.</p>
+    </div>
+
+    <div class="exercise-box">
+        <h3>2. Sleep Duration Calculator</h3>
+        <label for="bedtime">Bedtime:</label>
+        <input type="time" id="bedtime" ng-model="bedtime">
+        <br>
+        <label for="wakeTime">Wake-up Time:</label>
+        <input type="time" id="wakeTime" ng-model="wakeTime">
+        <br>
+        <button type="button" ng-click="calculateSleep()">Calculate Sleep Duration</button>
+        <p class="result" ng-if="sleepResult !== null">
+            Total Sleep Duration: {{sleepResult}} hours
+        </p>
+        <p class="angular-error" ng-if="sleepError">{{sleepError}}</p>
+    </div>
+
+    <div class="exercise-box">
+        <h3>3. Daily Wellness Activities</h3>
+        <input type="text" ng-model="newActivity" placeholder="Enter an activity">
+        <button type="button" ng-click="addActivity()">Add Activity</button>
+        <ul>
+            <li ng-repeat="activity in activities track by $index">
+                {{activity}}
+                <button type="button" class="delete" ng-click="removeActivity($index)">Remove</button>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- EXERCISE 9: ANGULARJS ROUTING AND FORM VALIDATION -->
+<section id="exercise9">
+    <h2>Exercise 9 – AngularJS Routing and Form Validation</h2>
+    <p>Use the links below to navigate between pages without reloading the website.</p>
+
+    <div class="route-links">
+        <a href="#!/home">Home</a>
+        <a href="#!/nutrition">Nutrition</a>
+        <a href="#!/fitness">Fitness</a>
+        <a href="#!/registration">Registration</a>
+    </div>
+
+    <div class="route-view" ng-view></div>
+</section>
+
+<!-- AngularJS route templates for Exercise 9 -->
+<script type="text/ng-template" id="route-home.html">
+    <h3>Welcome to Health & Wellness</h3>
+    <p>Explore nutrition, fitness and healthy habits through this routed section.</p>
+</script>
+
+<script type="text/ng-template" id="route-nutrition.html">
+    <h3>Nutrition</h3>
+    <p>Choose balanced meals with fruits, vegetables, whole grains and protein.</p>
+</script>
+
+<script type="text/ng-template" id="route-fitness.html">
+    <h3>Fitness</h3>
+    <p>Stay active with walking, stretching and regular exercise.</p>
+</script>
+
+<script type="text/ng-template" id="route-registration.html">
+    <div ng-controller="routeRegistrationController">
+        <h3>Wellness User Registration</h3>
+        <form name="routeForm" ng-submit="submitForm()" novalidate>
+            <label>Name *</label>
+            <input type="text" name="name" ng-model="user.name" required>
+            <span class="angular-error" ng-show="routeForm.name.$touched && routeForm.name.$invalid">Name is required.</span>
+
+            <label>Password *</label>
+            <input type="password" name="password" ng-model="user.password" ng-minlength="6" required>
+            <span class="angular-error" ng-show="routeForm.password.$touched && routeForm.password.$invalid">Enter a password with at least 6 characters.</span>
+
+            <label>Age *</label>
+            <input type="number" name="age" ng-model="user.age" min="1" max="100" required>
+            <span class="angular-error" ng-show="routeForm.age.$touched && routeForm.age.$invalid">Enter a valid age.</span>
+
+            <label>Mobile Number *</label>
+            <input type="text" name="mobile" ng-model="user.mobile" ng-pattern="/^[0-9]{10}$/" required>
+            <span class="angular-error" ng-show="routeForm.mobile.$touched && routeForm.mobile.$invalid">Enter a 10-digit mobile number.</span>
+
+            <label>Email *</label>
+            <input type="email" name="email" ng-model="user.email" required>
+            <span class="angular-error" ng-show="routeForm.email.$touched && routeForm.email.$invalid">Enter a valid email address.</span>
+
+            <label>Gender *</label>
+            <select name="gender" ng-model="user.gender" required>
+                <option value="">Select gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+
+            <label>State *</label>
+            <select name="state" ng-model="user.state" required>
+                <option value="">Select state</option>
+                <option>Tamil Nadu</option>
+                <option>Kerala</option>
+                <option>Karnataka</option>
+                <option>Andhra Pradesh</option>
+                <option>Other</option>
+            </select>
+
+            <button type="submit" ng-disabled="routeForm.$invalid">Submit Registration</button>
+            <p class="result" ng-if="submitted">Registration form validated successfully!</p>
+        </form>
+    </div>
+</script>
+
+<!-- EXERCISE 10: NODE.JS AND MONGODB FORM REQUEST HANDLING -->
+<section id="exercise10">
+    <h2>Exercise 10 – Form Request Handling Using Node.js and MongoDB</h2>
+    <p>Submit this wellness registration form. The Node.js server stores the submitted details in MongoDB.</p>
+
+    <div class="exercise-box">
+        <form id="exercise10Form">
+            <label for="serverName">Name *</label>
+            <input type="text" id="serverName" name="name" required>
+
+            <label for="serverEmail">Email *</label>
+            <input type="email" id="serverEmail" name="email" required>
+
+            <label for="serverAge">Age *</label>
+            <input type="number" id="serverAge" name="age" min="1" max="100" required>
+
+            <label for="serverMobile">Mobile Number *</label>
+            <input type="tel" id="serverMobile" name="mobile" pattern="[0-9]{10}" required>
+
+            <label for="serverGender">Gender *</label>
+            <select id="serverGender" name="gender" required>
+                <option value="">Select gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+
+            <label for="serverState">State *</label>
+            <select id="serverState" name="state" required>
+                <option value="">Select state</option>
+                <option>Tamil Nadu</option>
+                <option>Kerala</option>
+                <option>Karnataka</option>
+                <option>Andhra Pradesh</option>
+                <option>Other</option>
+            </select>
+
+            <label for="wellnessGoal">Wellness Goal *</label>
+            <select id="wellnessGoal" name="wellnessGoal" required>
+                <option value="">Select a goal</option>
+                <option>Fitness</option>
+                <option>Healthy Nutrition</option>
+                <option>Weight Management</option>
+                <option>Yoga and Meditation</option>
+                <option>Better Sleep</option>
+            </select>
+
+            <button type="submit">Submit and Save Details</button>
+        </form>
+    </div>
+                <p><strong>GitHub Pages note:</strong> GitHub Pages cannot run the Node.js server or connect to MongoDB. This form is for the local Node.js version of the project. To save registrations, run the backend from the ex10 folder and use its local website address.</p>
+</section>
+
 
 <!-- FOOTER -->
 <footer>
@@ -1066,5 +1336,168 @@
         });
 </script>
 
-</body>
+
+<script>
+    // AngularJS application shared by Exercises 8 and 9.
+    var wellnessApp = angular.module("wellnessApp", ["ngRoute"]);
+
+    wellnessApp.config(function($routeProvider) {
+        $routeProvider
+            .when("/home", {
+                templateUrl: "route-home.html"
+            })
+            .when("/nutrition", {
+                templateUrl: "route-nutrition.html"
+            })
+            .when("/fitness", {
+                templateUrl: "route-fitness.html"
+            })
+            .when("/registration", {
+                templateUrl: "route-registration.html"
+            })
+            .otherwise({
+                redirectTo: "/home"
+            });
+    });
+
+    // Exercise 8: AngularJS directives.
+    wellnessApp.controller("wellnessController", function($scope) {
+        $scope.comments = [];
+        $scope.newComment = "";
+
+        $scope.addComment = function() {
+            if ($scope.newComment && $scope.newComment.trim() !== "") {
+                $scope.comments.push($scope.newComment.trim());
+                $scope.newComment = "";
+            }
+        };
+
+        $scope.deleteComment = function(index) {
+            $scope.comments.splice(index, 1);
+        };
+
+        $scope.bedtime = null;
+        $scope.wakeTime = null;
+        $scope.sleepResult = null;
+        $scope.sleepError = "";
+
+        $scope.calculateSleep = function() {
+            $scope.sleepError = "";
+            $scope.sleepResult = null;
+
+            if (!angular.isDate($scope.bedtime) ||
+                !angular.isDate($scope.wakeTime)) {
+                $scope.sleepError = "Please select both bedtime and wake-up time.";
+                return;
+            }
+
+            var bedMinutes = $scope.bedtime.getHours() * 60 +
+                             $scope.bedtime.getMinutes();
+
+            var wakeMinutes = $scope.wakeTime.getHours() * 60 +
+                              $scope.wakeTime.getMinutes();
+
+            var duration = wakeMinutes - bedMinutes;
+
+            if (duration <= 0) {
+                duration += 1440;
+            }
+
+            $scope.sleepResult = (duration / 60).toFixed(2);
+        };
+
+        $scope.activities = [
+            "Drink 2 litres of water",
+            "Exercise for 30 minutes",
+            "Practice meditation"
+        ];
+        $scope.newActivity = "";
+
+        $scope.addActivity = function() {
+            if ($scope.newActivity && $scope.newActivity.trim() !== "") {
+                $scope.activities.push($scope.newActivity.trim());
+                $scope.newActivity = "";
+            }
+        };
+
+        $scope.removeActivity = function(index) {
+            $scope.activities.splice(index, 1);
+        };
+    });
+
+    // Exercise 9: Registration form validation.
+    wellnessApp.controller("routeRegistrationController", function($scope) {
+        $scope.user = {};
+
+        $scope.submitForm = function() {
+            if ($scope.routeForm.$valid) {
+                $scope.submitted = true;
+            }
+        };
+    });
+</script>
+
+
+
+<script>
+    // Exercise 7: Daily Water Intake Tracker using jQuery.
+    $(document).ready(function() {
+        var consumed = 0;
+
+        function updateWaterTracker() {
+            var goal = parseFloat($("#waterGoal").val());
+
+            if (isNaN(goal) || goal <= 0) {
+                $("#waterRemaining").text("Enter a valid goal");
+                $("#waterStatus").text("Please enter a valid daily goal.");
+                $("#waterProgress").css("width", "0%");
+                return;
+            }
+
+            var goalMl = goal * 1000;
+            var remaining = Math.max(goalMl - consumed, 0);
+            var percentage = Math.min((consumed / goalMl) * 100, 100);
+
+            $("#waterConsumed").text(consumed);
+            $("#waterRemaining").text(remaining + " ml");
+            $("#waterProgress").css("width", percentage + "%");
+
+            if (consumed >= goalMl) {
+                $("#waterStatus").text("Daily water goal completed!");
+            } else {
+                $("#waterStatus").text("Keep going! You are " + percentage.toFixed(0) + "% done.");
+            }
+        }
+
+        $("#addWater").click(function() {
+            consumed += 250;
+            updateWaterTracker();
+        });
+
+        $("#resetWater").click(function() {
+            consumed = 0;
+            updateWaterTracker();
+        });
+
+        $("#waterGoal").on("input", updateWaterTracker);
+
+        updateWaterTracker();
+    });
+</script>
+
+
+
+<script>
+    // GitHub Pages is static hosting; do not submit Exercise 10 to a missing /server route.
+    (function () {
+        var form = document.getElementById("exercise10Form");
+        if (form) {
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+                alert("Exercise 10 requires the Node.js and MongoDB backend. Run the project locally to save registrations.");
+            });
+        }
+    })();
+</script>
+\n</body>
 </html>

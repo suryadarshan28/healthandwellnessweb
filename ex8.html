@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html ng-app="wellnessApp">
+
+<head>
+    <title>Health and Wellness Tracker</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #e8f5e9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2e7d32;
+        }
+
+        .container {
+            background-color: white;
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #388e3c;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete {
+            background-color: #e53935;
+        }
+
+        li {
+            margin: 10px;
+        }
+
+        .result {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body ng-controller="wellnessController">
+
+    <h1>Health and Wellness Tracker</h1>
+
+    <!-- Section 1: Wellness Feedback -->
+    <div class="container">
+
+        <h2>1. Wellness Feedback</h2>
+
+        <input type="text"
+               ng-model="newComment"
+               placeholder="Enter your feedback">
+
+        <button ng-click="addComment()">Add Comment</button>
+
+        <h3>Feedback List</h3>
+
+        <ul>
+            <li ng-repeat="comment in comments track by $index">
+                {{comment}}
+                <button class="delete"
+                        ng-click="deleteComment($index)">
+                    Delete
+                </button>
+            </li>
+        </ul>
+
+    </div>
+
+    <!-- Section 2: Sleep Duration Calculator -->
+    <div class="container">
+
+        <h2>2. Sleep Duration Calculator</h2>
+
+        <label>Bedtime:</label>
+        <input type="time" ng-model="bedtime">
+
+        <br><br>
+
+        <label>Wake-up Time:</label>
+        <input type="time" ng-model="wakeTime">
+
+        <br><br>
+
+        <button ng-click="calculateSleep()">
+            Calculate Sleep Duration
+        </button>
+
+        <h3 class="result" ng-if="sleepResult !== null">
+            Total Sleep Duration: {{sleepResult}} hours
+        </h3>
+
+        <p ng-if="sleepError" style="color:red">
+            {{sleepError}}
+        </p>
+
+    </div>
+
+    <!-- Section 3: Daily Wellness Activities -->
+    <div class="container">
+
+        <h2>3. Daily Wellness Activities</h2>
+
+        <input type="text"
+               ng-model="newActivity"
+               placeholder="Enter an activity">
+
+        <button ng-click="addActivity()">Add Activity</button>
+
+        <h3>My Activities</h3>
+
+        <ul>
+            <li ng-repeat="activity in activities track by $index">
+                {{activity}}
+
+                <button class="delete"
+                        ng-click="removeActivity($index)">
+                    Remove
+                </button>
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+
+        var app = angular.module("wellnessApp", []);
+
+        app.controller("wellnessController", function($scope) {
+
+            // Wellness Feedback
+            $scope.comments = [];
+
+            $scope.addComment = function() {
+                if ($scope.newComment && $scope.newComment.trim() !== "") {
+                    $scope.comments.push($scope.newComment);
+                    $scope.newComment = "";
+                }
+            };
+
+            $scope.deleteComment = function(index) {
+                $scope.comments.splice(index, 1);
+            };
+
+
+            // Sleep Duration Calculator
+            $scope.bedtime = null;
+            $scope.wakeTime = null;
+            $scope.sleepResult = null;
+            $scope.sleepError = "";
+
+            $scope.calculateSleep = function() {
+
+                $scope.sleepError = "";
+                $scope.sleepResult = null;
+
+                if (!angular.isDate($scope.bedtime) ||
+                    !angular.isDate($scope.wakeTime)) {
+
+                    $scope.sleepError =
+                        "Please select both bedtime and wake-up time.";
+
+                    return;
+                }
+
+                // Get bedtime hours and minutes
+                var bedMinutes =
+                    $scope.bedtime.getHours() * 60 +
+                    $scope.bedtime.getMinutes();
+
+                // Get wake-up hours and minutes
+                var wakeMinutes =
+                    $scope.wakeTime.getHours() * 60 +
+                    $scope.wakeTime.getMinutes();
+
+                // Calculate sleep duration
+                var duration = wakeMinutes - bedMinutes;
+
+                // Handle sleeping past midnight
+                if (duration <= 0) {
+                    duration = duration + 1440;
+                }
+
+                // Convert minutes into hours
+                $scope.sleepResult =
+                    (duration / 60).toFixed(2);
+            };
+
+
+            // Daily Wellness Activities
+            $scope.activities = [
+                "Drink 2 litres of water",
+                "Exercise for 30 minutes",
+                "Practice meditation"
+            ];
+
+            $scope.addActivity = function() {
+                if ($scope.newActivity &&
+                    $scope.newActivity.trim() !== "") {
+
+                    $scope.activities.push($scope.newActivity);
+                    $scope.newActivity = "";
+                }
+            };
+
+            $scope.removeActivity = function(index) {
+                $scope.activities.splice(index, 1);
+            };
+
+        });
+
+    </script>
+
+</body>
+</html>
